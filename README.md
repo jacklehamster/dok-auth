@@ -1,28 +1,16 @@
-# bun-template
+# dok-auth
 
-[![npm version](https://badge.fury.io/js/bun-template.svg)](https://www.npmjs.com/package/bun-template)
+[![npm version](https://badge.fury.io/js/dok-auth.svg)](https://www.npmjs.com/package/dok-auth)
 
-Bun template for creating projects using bunjs
+Perform authentication and provides an authToken.
+Works with Newgrounds.
 
-![icon](https://jacklehamster.github.io/bun-template/icon.png)
-
-## Install bun
-
-<https://bun.sh/>
-
-```bash
-curl -fsSL https://bun.sh/install | bash
-```
-
-## Commands
-
-- **start**: "bun run index.ts",
-- **bundle**: "bun run bundler/bundler.ts",
+![icon](https://jacklehamster.github.io/dok-auth/icon.png)
 
 ## Run example
 
-[https://jacklehamster.github.io/bun-template/example/](https://jacklehamster.github.io/bun-template/example/)
+[https://jacklehamster.github.io/dok-auth/example/](https://jacklehamster.github.io/dok-auth/example/)
 
 ## Github Source
 
-[https://github.com/jacklehamster/bun-template/](https://github.com/jacklehamster/bun-template/)
+[https://github.com/jacklehamster/dok-auth/](https://github.com/jacklehamster/dok-auth/)
