@@ -8,7 +8,6 @@ interface Props {
 }
 
 export class SecretAuthenticator implements Authenticator {
-  type: string = "secret";
   private secretKey: string;
   private secretHash: string;
   constructor({ secretKey = "secret", secretWord, secretHash }: Props) {
@@ -20,6 +19,9 @@ export class SecretAuthenticator implements Authenticator {
 
   async authenticate(payload: any): Promise<boolean> {
     const secret = payload[this.secretKey];
+    if (!secret) {
+      return false;
+    }
     if (secret === this.secretHash) {
       return true;
     }

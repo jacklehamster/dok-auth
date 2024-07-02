@@ -3,20 +3,21 @@ import { Authenticator } from "../authenticator"; // Import Authenticator interf
 
 // Define the structure of the payload object
 interface Payload {
-  userId: string;
-  session: string;
-  type: string;
+  userId?: string;
+  session?: string;
 }
 
 // Implement NewgroundsAuthenticator class which conforms to Authenticator interface
 export class NewgroundsAuthenticator implements Authenticator {
-  type = "newgrounds"; // Define the type of the authenticator
 
   // Constructor to initialize the config
   constructor(private config: Config) {}
 
   // Method to authenticate user based on userId and session
   async authenticate({ userId, session }: Payload): Promise<boolean> {
+    if (!session || !userId) {
+      return false;
+    }
     // Validate the session using Newgrounds API and check if it matches the userId
     return await Newgrounds.validateSession(session, this.config) === userId;
   }

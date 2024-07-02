@@ -11,10 +11,6 @@ describe("NewgroundsAuthenticator", () => {
     authenticator = new NewgroundsAuthenticator(mockConfig);
   });
 
-  it("should have type 'newgrounds'", () => {
-    expect(authenticator.type).toBe("newgrounds");
-  });
-
   it("should authenticate user with valid session", async () => {
     const payload = {
       userId: "validUserId",

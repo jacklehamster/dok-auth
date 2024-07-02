@@ -14,9 +14,9 @@ interface TokenResult {
 }
 
 export class AuthManager {
-  private authenticators: Record<string, Authenticator> = {};
+  private authenticators: Set<Authenticator> = new Set();
   constructor(private authProvider: AuthProvider, authenticators: Authenticator[]) {
-    authenticators.forEach(validator => this.authenticators[validator.type] = validator);
+    authenticators.forEach(validator => this.authenticators.add(validator));
   }
 
   /**
@@ -35,14 +35,21 @@ export class AuthManager {
       }
     }
 
-    if (await this.authenticators[payload.type].authenticate(payload)) {
+    let authenticated = false;
+    for (let auth of this.authenticators) {
+      if (await auth.authenticate(payload)) {
+        authenticated = true;
+        break;
+      }
+    }
+    if (authenticated) {
       const token = await this.authProvider.provideToken(payload.userId);
       if (token) {
         return {
           authToken: token,
           expiration: this.authProvider.getTokenTimestamp(token),
         }  
-      }
+      }  
     }
     return {};
   }
