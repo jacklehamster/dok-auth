@@ -2,7 +2,6 @@ import { Authenticator } from "@/authenticators/authenticator";
 import { AuthProvider } from "./auth-provider";
 
 interface Payload {
-  type: string;
   userId: string;
   authToken?: string;
   [key: string]: any;
