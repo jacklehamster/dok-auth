@@ -1,6 +1,6 @@
 {
   "name": "dok-auth",
-  "module": "src/index.tsx",
+  "module": "src/index.ts",
   "description": "Authentication system that validates users and provides auth tokens",
   "version": "1.0.4",
   "keywords": [
@@ -57,7 +57,7 @@
   "dependencies": {
     "jssha": "^3.3.1",
     "medal-popup": "^1.0.16",
-    "redis": "^4.6.14",
+    "redis": "^4.6.15",
     "short-unique-id": "^5.2.0"
   }
 }
