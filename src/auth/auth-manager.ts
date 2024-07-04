@@ -1,16 +1,7 @@
 import { Authenticator } from "@/authenticators/authenticator";
 import { AuthProvider } from "./auth-provider";
-
-export interface Payload {
-  userId: string;
-  authToken?: string;
-  [key: string]: any;
-}
-
-interface TokenResult {
-  authToken?: string;
-  expiration?: Date;
-}
+import { TokenResult } from "./TokenResult";
+import { Payload } from "./Payload";
 
 export class AuthManager {
   private authenticators: Set<Authenticator> = new Set();
