@@ -15,6 +15,11 @@ export class AuthManager {
    * @returns 
    */
   async authenticatePayload(payload: Payload): Promise<TokenResult> {
+    if (!payload.userId) {
+      return {
+        error: "userID missing",
+      }
+    }
     if (payload.authToken) {
       const newToken = await this.authProvider.refreshToken(payload.userId, payload.authToken);
       if (newToken) {
@@ -41,6 +46,8 @@ export class AuthManager {
         }  
       }  
     }
-    return {};
+    return {
+      error: "Not authorized",
+    };
   }
 }
