@@ -2,7 +2,7 @@
   "name": "dok-auth",
   "module": "src/index.ts",
   "description": "Authentication system that validates users and provides auth tokens",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "keywords": [
     "bun",
     "bunjs",
