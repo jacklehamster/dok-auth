@@ -15,7 +15,6 @@ describe("NewgroundsAuthenticator", () => {
     const payload = {
       userId: "validUserId",
       session: "validSession",
-      type: "newgrounds"
     };
 
     // Mocking the validateSession function directly
@@ -30,7 +29,6 @@ describe("NewgroundsAuthenticator", () => {
     const payload = {
       userId: "validUserId",
       session: "invalidSession",
-      type: "newgrounds"
     };
 
     // Mocking the validateSession function directly

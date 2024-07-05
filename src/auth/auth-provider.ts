@@ -15,7 +15,7 @@ export class AuthProvider {
         await this.client.set(userId, authToken, {
             EX: EXPIRATION_TIME_IN_SECONDS
         });
-        console.log(`AuthToken for user ${userId} set with expiration of ${EXPIRATION_TIME_IN_SECONDS} seconds.`);
+        console.log(`New authToken ${authToken} for user ${userId} set with expiration of ${EXPIRATION_TIME_IN_SECONDS} seconds.`);
     } catch (err) {
         console.error('Error setting authToken:', err);
         return undefined;
@@ -42,7 +42,7 @@ export class AuthProvider {
       try {
           const authToken = await this.client.get(userId);
           if (authToken) {
-              console.log(`AuthToken for user ${userId}: ${authToken}`);
+              console.log(`Current authToken for user ${userId}: ${authToken}`);
               return authToken;
           } else {
               console.log(`AuthToken for user ${userId} has expired or does not exist.`);
