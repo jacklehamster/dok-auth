@@ -32,7 +32,7 @@ export class AuthManager {
 
     let authenticated = false;
     for (let auth of this.authenticators) {
-      if (await auth.authenticate(payload)) {
+      if (!auth.deactivated && await auth.authenticate(payload)) {
         authenticated = true;
         break;
       }

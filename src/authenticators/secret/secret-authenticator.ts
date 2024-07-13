@@ -7,6 +7,10 @@ interface Props {
   secretHash?: string;
 }
 
+/**
+ * Authenticator where we can just pass a secret word.
+ * Mainly used for testing purposes.
+ */
 export class SecretAuthenticator implements Authenticator {
   private secretKey: string;
   private secretHash: string;
