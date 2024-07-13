@@ -8,11 +8,11 @@ export class AuthProvider {
   constructor(private client: RedisClientType) {
   }
 
-  async provideToken(userId: string) {
+  async provideToken(userId: string = "default") {
     const authToken = shortUid.stamp(32, new Date(Date.now() + EXPIRATION_TIME_IN_SECONDS * 1000));
 
-     try {
-        await this.client.set(userId, authToken, {
+    try {
+        const result = await this.client.set(userId, authToken, {
             EX: EXPIRATION_TIME_IN_SECONDS
         });
         console.log(`New authToken ${authToken} for user ${userId} set with expiration of ${EXPIRATION_TIME_IN_SECONDS} seconds.`);

@@ -38,8 +38,12 @@ export class AuthManager {
         return {
           authToken: token,
           expiration: this.authProvider.getTokenTimestamp(token),
-        }  
-      }  
+        }
+      } else {
+        return {
+          
+        };
+      }
     }
     return {
       error: !payload.userId ? "userID missing" : "Not authorized",
