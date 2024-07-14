@@ -1,5 +1,6 @@
 import { RedisClientType } from "redis";
 import ShortUniqueId from "short-unique-id";
+import { DEFAULT_USER_ID } from "./Payload";
 
 const shortUid = new ShortUniqueId();
 const EXPIRATION_TIME_IN_SECONDS = 600; // 10 minutes
@@ -8,7 +9,7 @@ export class AuthProvider {
   constructor(private client: RedisClientType) {
   }
 
-  async provideToken(userId: string = "default") {
+  async provideToken(userId: string = DEFAULT_USER_ID) {
     const authToken = shortUid.stamp(32, new Date(Date.now() + EXPIRATION_TIME_IN_SECONDS * 1000));
 
     try {
@@ -28,7 +29,7 @@ export class AuthProvider {
     return await this.getAuthToken(userId) === authToken;
   }
 
-  async refreshToken(userId: string, authToken: string) {
+  async refreshToken(userId: string = DEFAULT_USER_ID, authToken: string) {
     if (await this.authenticateToken(userId, authToken)) {
       return await this.provideToken(userId);
     }

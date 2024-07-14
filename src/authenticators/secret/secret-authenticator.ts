@@ -7,6 +7,11 @@ interface Props {
   secretHash?: string;
 }
 
+// Define the structure of the payload object
+interface Payload {
+  [key: string]: string;
+}
+
 /**
  * Authenticator where we can just pass a secret word.
  * Mainly used for testing purposes.
@@ -21,7 +26,7 @@ export class SecretAuthenticator implements Authenticator {
       .getHash("HEX");
   }
 
-  async authenticate(payload: any): Promise<boolean> {
+  async authenticate(payload: Payload): Promise<boolean> {
     const secret = payload[this.secretKey];
     if (!secret) {
       return false;
