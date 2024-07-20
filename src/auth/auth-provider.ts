@@ -1,12 +1,12 @@
-import { RedisClientType } from "redis";
 import ShortUniqueId from "short-unique-id";
 import { DEFAULT_USER_ID } from "./Payload";
+import { DataClient } from "@/interface/data-client";
 
 const shortUid = new ShortUniqueId();
 const EXPIRATION_TIME_IN_SECONDS = 600; // 10 minutes
 
 export class AuthProvider {
-  constructor(private client: RedisClientType) {
+  constructor(private client: DataClient) {
   }
 
   async provideToken(userId: string = DEFAULT_USER_ID) {
