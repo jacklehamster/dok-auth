@@ -5,6 +5,6 @@ import { SecretAuthenticator } from "./authenticators/secret/secret-authenticato
 import { Authenticator } from "./authenticators/authenticator";
 import { Payload } from "./auth/Payload";
 import { TokenResult } from "./auth/TokenResult";
-import { DataClient } from "./interface/data-client";
+import { DataClient, ExpirationOptions } from "./interface/data-client";
 
-export { AuthManager, AuthProvider, NewgroundsAuthenticator, SecretAuthenticator, Authenticator, Payload, TokenResult, DataClient };
+export { AuthManager, AuthProvider, NewgroundsAuthenticator, SecretAuthenticator, Authenticator, Payload, TokenResult, DataClient, ExpirationOptions };

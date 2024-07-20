@@ -1,4 +1,4 @@
-interface ExpirationOptions {
+export interface ExpirationOptions {
   EX?: number;
 }
 
