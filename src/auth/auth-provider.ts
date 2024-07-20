@@ -13,7 +13,7 @@ export class AuthProvider {
     const authToken = shortUid.stamp(32, new Date(Date.now() + EXPIRATION_TIME_IN_SECONDS * 1000));
 
     try {
-        const result = await this.client.set(userId, authToken, {
+        await this.client.set(userId, authToken, {
             EX: EXPIRATION_TIME_IN_SECONDS
         });
         console.log(`New authToken ${authToken} for user ${userId} set with expiration of ${EXPIRATION_TIME_IN_SECONDS} seconds.`);

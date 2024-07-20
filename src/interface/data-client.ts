@@ -4,5 +4,5 @@ interface ExpirationOptions {
 
 export interface DataClient {
   get(key: string): Promise<string | null>;
-  set(key: string, value: string, options?: ExpirationOptions): Promise<void>;
+  set(key: string, value: string, options?: ExpirationOptions): Promise<string | null>;
 }
