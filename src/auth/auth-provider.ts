@@ -1,6 +1,6 @@
 import ShortUniqueId from "short-unique-id";
 import { DEFAULT_USER_ID } from "./Payload";
-import { DataClient } from "@/interface/data-client";
+import { DataClient } from "@dobuki/data-client";
 
 const shortUid = new ShortUniqueId();
 const EXPIRATION_TIME_IN_SECONDS = 600; // 10 minutes
