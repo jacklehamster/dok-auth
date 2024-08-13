@@ -48,13 +48,13 @@
     "@types/jest": "^29.5.12",
     "@types/jssha": "^3.0.0",
     "jest": "^29.7.0",
-    "ts-jest": "^29.2.3"
+    "ts-jest": "^29.2.3",
+    "@dobuki/data-client": "latest"
   },
   "peerDependencies": {
     "typescript": "^5.0.0"
   },
   "dependencies": {
-    "@dobuki/data-client": "^1.0.5",
     "jssha": "^3.3.1",
     "medal-popup": "^1.0.20",
     "short-unique-id": "^5.2.0"
