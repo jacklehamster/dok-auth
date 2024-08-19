@@ -15,6 +15,7 @@ describe("NewgroundsAuthenticator", () => {
     const payload = {
       userId: "validUserId",
       session: "validSession",
+      type: "newgrounds",
     };
 
     // Mocking the validateSession function directly
@@ -27,6 +28,7 @@ describe("NewgroundsAuthenticator", () => {
 
   it("should not authenticate user with invalid session", async () => {
     const payload = {
+      type: "newgrounds",
       userId: "validUserId",
       session: "invalidSession",
     };
@@ -37,5 +39,20 @@ describe("NewgroundsAuthenticator", () => {
     const result = await authenticator.authenticate(payload);
     expect(result).toBe(false);
     expect(Newgrounds.validateSession).toHaveBeenCalledWith(payload.session, mockConfig);
+  });
+
+  it("should not authenticate if type is not newgrounds", async () => {
+    const payload = {
+      type: "differentType",
+      userId: "validUserId",
+      session: "validSession",
+    };
+
+    // Mocking the validateSession function directly
+    Newgrounds.validateSession = jest.fn().mockResolvedValue("differentUserId");
+
+    const result = await authenticator.authenticate(payload);
+    expect(result).toBe(false);
+    expect(Newgrounds.validateSession).not.toHaveBeenCalledWith(payload.session, mockConfig);
   });
 });
