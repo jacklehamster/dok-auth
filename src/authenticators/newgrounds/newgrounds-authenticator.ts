@@ -22,8 +22,6 @@ export class NewgroundsAuthenticator implements Authenticator {
     if (!session || !userId || type !== NEWGROUNDS) {
       return false;
     }
-    console.log("Key", key);
-    console.log("this.configs", this.configs);
     const config = this.configs.find(config => config.key === key);
     // Validate the session using Newgrounds API and check if it matches the userId
     return await Newgrounds.validateSession(session, config) === userId;
