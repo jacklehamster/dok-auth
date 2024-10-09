@@ -13,14 +13,14 @@ export { AuthManager, AuthProvider, NewgroundsAuthenticator, SecretAuthenticator
 interface Props {
   secretConfig?: {
     secretKey?: string;
-    secret: string;  
+    secret: string;
   };
-  newgroundsConfig?: NewgroundsConfig;
+  newgroundsConfigs?: NewgroundsConfig[];
 }
 
 export function createAuthManager(dataClient: DataClient, {
   secretConfig,
-  newgroundsConfig,
+  newgroundsConfigs,
 }: Props): AuthManager {
   const provider = new AuthProvider(dataClient);
   return new AuthManager(provider, [
@@ -28,8 +28,8 @@ export function createAuthManager(dataClient: DataClient, {
       secretKey: secretConfig.secretKey,
       secretWord: secretConfig.secret,
     })] : [],
-    ...newgroundsConfig ? [
-      new NewgroundsAuthenticator(newgroundsConfig),
+    ...newgroundsConfigs ? [
+      new NewgroundsAuthenticator(newgroundsConfigs),
     ] : [],
   ]);
 }

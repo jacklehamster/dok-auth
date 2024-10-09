@@ -21,7 +21,7 @@ export class AuthManager {
         return {
           authToken: newToken,
           expiration: this.authProvider.getTokenTimestamp(newToken)
-        };  
+        };
       }
     }
 
@@ -41,12 +41,11 @@ export class AuthManager {
         }
       } else {
         return {
-          
         };
       }
     }
     return {
-      error: !payload.userId ? "userID missing" : "Not authorized",
+      error: !payload.userId ? "userId missing" : "Not authorized",
     };
   }
 }

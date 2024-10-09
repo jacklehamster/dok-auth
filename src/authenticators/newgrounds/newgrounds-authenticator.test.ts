@@ -8,7 +8,7 @@ describe("NewgroundsAuthenticator", () => {
 
   beforeAll(() => {
     mockConfig = {} as Config; // Initialize mock Config object
-    authenticator = new NewgroundsAuthenticator(mockConfig);
+    authenticator = new NewgroundsAuthenticator([mockConfig]);
   });
 
   it("should authenticate user with valid session", async () => {

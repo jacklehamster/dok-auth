@@ -6,6 +6,7 @@ const NEWGROUNDS = "newgrounds";
 // Define the structure of the payload object
 interface Payload {
   type?: typeof NEWGROUNDS | string;
+  key?: string;
   userId?: string;
   session?: string;
 }
@@ -14,14 +15,15 @@ interface Payload {
 export class NewgroundsAuthenticator implements Authenticator {
 
   // Constructor to initialize the config
-  constructor(private config: Config) { }
+  constructor(private configs: Config[]) { }
 
   // Method to authenticate user based on userId and session
-  async authenticate({ userId, session, type }: Payload): Promise<boolean> {
+  async authenticate({ userId, session, type, key }: Payload): Promise<boolean> {
     if (!session || !userId || type !== NEWGROUNDS) {
       return false;
     }
+    const config = this.configs.find(config => config.key === key);
     // Validate the session using Newgrounds API and check if it matches the userId
-    return await Newgrounds.validateSession(session, this.config) === userId;
+    return await Newgrounds.validateSession(session, config) === userId;
   }
 }
