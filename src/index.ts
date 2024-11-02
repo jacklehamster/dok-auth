@@ -14,6 +14,7 @@ interface Props {
   secretConfig?: {
     secretKey?: string;
     secret: string;
+    secretHash?: string;
   };
   newgroundsConfigs?: NewgroundsConfig[];
 }
@@ -24,12 +25,13 @@ export function createAuthManager(dataClient: DataClient, {
 }: Props): AuthManager {
   const provider = new AuthProvider(dataClient);
   return new AuthManager(provider, [
-    ...secretConfig ? [new SecretAuthenticator({
-      secretKey: secretConfig.secretKey,
-      secretWord: secretConfig.secret,
-    })] : [],
     ...newgroundsConfigs ? [
       new NewgroundsAuthenticator(newgroundsConfigs),
     ] : [],
+    ...secretConfig ? [new SecretAuthenticator({
+      secretKey: secretConfig.secretKey,
+      secretWord: secretConfig.secret,
+      secretHash: secretConfig.secretHash,
+    })] : [],
   ]);
 }
